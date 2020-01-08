@@ -1,4 +1,4 @@
-package com.project.alice.printscreen;
+package com.project.alice.screencapture;
 
 import android.app.Activity;
 import android.content.Context;
@@ -53,12 +53,12 @@ public class ScreenCapture {
         }
     }
 
-    public void ParseData( Intent data,CallBack callBack){
+    public void ParseData(Intent data, final CallBack callBack){
         onScreenshotTaskBegan();
 
-        MediaProjection mP=mPM.getMediaProjection(Activity.RESULT_OK,data);
+        final MediaProjection mP=mPM.getMediaProjection(Activity.RESULT_OK,data);
         ImageReader imageReader=ImageReader.newInstance(Width,Height,PixelFormat.RGBA_8888,2);
-        VirtualDisplay vDisplay=mP.createVirtualDisplay("capture_screen",Width,Height,
+        final VirtualDisplay vDisplay=mP.createVirtualDisplay("capture_screen",Width,Height,
                 Resources.getSystem().getDisplayMetrics().densityDpi,DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
                 imageReader.getSurface(),null,null);
 
